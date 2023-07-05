@@ -11,3 +11,5 @@ In the project directory, you can run:
 - `yarn lint` - lints project files according to eslint rules, see below. Typical use case: continuous integration environments, Travis, CircleCI, etc.
 
 - `yarn fix` - same as `yarn lint`, but also fixes errors, when possible. Typical use case: local development environment, git hooks.
+
+Deployed on https://alionasushko.github.io/millionaire-game/
