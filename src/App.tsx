@@ -17,7 +17,7 @@ const App: React.FC = () => {
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="container">
           <Routes>
-            <Route path="/millionaire-game" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/game" element={<Game />} />
             <Route path="/game-result" element={<GameResult />} />
           </Routes>
