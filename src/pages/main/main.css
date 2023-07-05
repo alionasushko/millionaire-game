@@ -1,0 +1,126 @@
+.main-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.main-layout.background-gradient {
+  background: linear-gradient(
+    to top left,
+    var(--orange-5) 50%,
+    var(--white-100) 50%
+  );
+}
+
+.main-layout .main-layout-content {
+  display: flex;
+  align-items: center;
+  width: 89%;
+  gap: 2.5%;
+  padding-bottom: 5.2%;
+}
+
+.main-layout .main-layout-content .hand-image-wrapper,
+.main-layout .main-layout-content .text-content-wrapper {
+  flex: 1 1 0;
+}
+
+.main-layout .main-layout-content .hand-image-wrapper .hand-image {
+  display: block;
+  width: 72.4%;
+  margin: 0 auto;
+}
+
+.main-layout .main-layout-content .text-content-wrapper h1,
+.main-layout .main-layout-content .text-content-wrapper h2 {
+  font-size: 3.5em;
+  font-weight: 600;
+  line-height: 116%;
+  margin: 0 0 64px 0;
+}
+
+.main-layout .main-layout-content .text-content-wrapper .score-label {
+  display: block;
+  color: var(--black-100);
+  font-size: 2em;
+  font-weight: 600;
+  line-height: 116%;
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 64em) {
+  .main-layout .main-layout-content .text-content-wrapper h1,
+  .main-layout .main-layout-content .text-content-wrapper h2 {
+    font-size: 42px;
+    margin: 0 0 46px 0;
+  }
+}
+
+@media screen and (max-width: 48em) {
+  .main-layout .main-layout-content {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .main-layout .main-layout-content .hand-image-wrapper .hand-image {
+    width: 45%;
+    margin: 0 auto 64px;
+  }
+
+  .main-layout .main-layout-content .text-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-layout .main-layout-content .text-content-wrapper h1 {
+    max-width: 65%;
+  }
+
+  .main-layout .main-layout-content .text-content-wrapper h1,
+  .main-layout .main-layout-content .text-content-wrapper h2 {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 35.5em) {
+  .main-layout {
+    align-items: start;
+    padding: 25% 16px 48px;
+  }
+
+  .main-layout .main-layout-content {
+    width: 100vh;
+    height: 100%;
+    padding-bottom: 0;
+  }
+
+  .main-layout .main-layout-content .hand-image-wrapper .hand-image {
+    width: 68.5%;
+    margin: 18px auto;
+  }
+
+  .main-layout .main-layout-content .text-content-wrapper {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .main-layout .main-layout-content .text-content-wrapper h1,
+  .main-layout .main-layout-content .text-content-wrapper h2 {
+    font-size: 32px;
+    max-width: 95%;
+  }
+
+  .main-layout .main-layout-content .text-content-wrapper .btn-primary {
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .main-layout .main-layout-content .text-content-wrapper .score-label {
+    font-size: 18px;
+    margin-top: 8px;
+  }
+}

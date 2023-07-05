@@ -1,0 +1,30 @@
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ErrorBoundary } from 'react-error-boundary'
+import Game from './pages/game/Game'
+import Home from './pages/main/Home'
+import GameResult from './pages/main/GameResult'
+
+const App: React.FC = () => {
+  return (
+    <ErrorBoundary
+      fallback={
+        <div style={{ margin: 20, textAlign: 'center' }}>
+          Something went wrong
+        </div>
+      }
+    >
+      <BrowserRouter>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/game" element={<Game />} />
+            <Route path="/game-result" element={<GameResult />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </ErrorBoundary>
+  )
+}
+
+export default App
