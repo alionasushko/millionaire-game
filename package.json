@@ -1,7 +1,7 @@
 {
   "name": "millionaire-game",
   "version": "0.1.0",
-  "homepage": "http://alionasushko.github.io/",
+  "homepage": "http://alionasushko.github.io/millionaire-game",
   "private": false,
   "dependencies": {
     "@babel/runtime": "7.21.5",
