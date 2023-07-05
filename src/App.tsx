@@ -14,10 +14,10 @@ const App: React.FC = () => {
         </div>
       }
     >
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div className="container">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/millionaire-game" element={<Home />} />
             <Route path="/game" element={<Game />} />
             <Route path="/game-result" element={<GameResult />} />
           </Routes>
