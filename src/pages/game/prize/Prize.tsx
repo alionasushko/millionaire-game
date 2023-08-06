@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { selectors, actionTypes } from '../../../features/game'
 import { numberWithCommas } from '../../../utils/helpers'
 import Icon from '../../../components/Icon'
@@ -7,9 +7,9 @@ import money from '../../../data/money.json'
 import './prize.css'
 
 const Prize: React.FC = () => {
-  const dispatch = useDispatch()
-  const prize = useSelector(selectors.getPrize)
-  const isOpenMobileMenu = useSelector(selectors.getIsOpenMobileMenu)
+  const dispatch = useAppDispatch()
+  const prize = useAppSelector(selectors.getPrize)
+  const isOpenMobileMenu = useAppSelector(selectors.getIsOpenMobileMenu)
 
   const closeMobileMenu = useCallback(() => {
     dispatch({

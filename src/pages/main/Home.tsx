@@ -1,12 +1,20 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import hand_image from '../../assets/hand.png'
+import { useAppSelector, useAppDispatch } from '../../hooks'
+import { selectors, actions } from '../../features/game'
+import Button from '../../components/Button'
 import './main.css'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const loadingQuiz = useAppSelector(selectors.getLoadingQuiz)
 
-  const startGame = () => navigate('/game')
+  const startGame = async () => {
+    await dispatch(actions.fetchQuestions())
+    navigate('/game')
+  }
 
   return (
     <section className="main-layout background-gradient container">
@@ -16,9 +24,14 @@ const Home: React.FC = () => {
         </div>
         <div className="text-content-wrapper">
           <h1>Who wants to be a millionaire?</h1>
-          <button className="btn-primary" onClick={startGame}>
+          <Button
+            className="btn-primary"
+            loading={loadingQuiz}
+            disabled={loadingQuiz}
+            onClick={startGame}
+          >
             Start
-          </button>
+          </Button>
         </div>
       </div>
     </section>

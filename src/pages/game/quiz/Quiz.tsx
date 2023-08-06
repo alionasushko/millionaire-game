@@ -1,10 +1,9 @@
 import React, { useCallback, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { useNavigate } from 'react-router-dom'
 import { useErrorBoundary } from 'react-error-boundary'
 import { selectors, actionTypes } from '../../../features/game'
 import { Question } from '../../../features/game/types'
-import questions from '../../../data/questions.json'
 import money from '../../../data/money.json'
 import Icon from '../../../components/Icon'
 import './quiz.css'
@@ -40,11 +39,12 @@ const ALPHABET = [
 
 const Quiz: React.FC = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { showBoundary } = useErrorBoundary()
 
-  const quiz = useSelector(selectors.getQuiz)
-  const isOpenMobileMenu = useSelector(selectors.getIsOpenMobileMenu)
+  const quiz = useAppSelector(selectors.getQuiz)
+  const questions = useAppSelector(selectors.getQuestions)
+  const isOpenMobileMenu = useAppSelector(selectors.getIsOpenMobileMenu)
 
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([])
 
@@ -58,22 +58,31 @@ const Quiz: React.FC = () => {
         quiz.correctAnswers.includes(answer)
       )
 
-      if (!isCorrectResolve || indexOfNextQuestion === questions.length)
-        return navigate('/game-result')
-
-      dispatch({
-        type: actionTypes.CHANGE_QUESTION,
-        payload: {
-          level: {
-            quiz: {
-              ...questions[indexOfNextQuestion],
+      if (isCorrectResolve) {
+        if (indexOfNextQuestion === questions.length) {
+          dispatch({
+            type: actionTypes.CHANGE_QUESTION,
+            payload: {
+              earnedMoney: money[indexOfCurrentQuestion],
             },
-            prize: money[indexOfNextQuestion],
-          },
-          earnedMoney: money[indexOfCurrentQuestion],
-        },
-      })
-      setSelectedAnswers([])
+          })
+          navigate('/game-result')
+        } else {
+          dispatch({
+            type: actionTypes.CHANGE_QUESTION,
+            payload: {
+              level: {
+                quiz: {
+                  ...questions[indexOfNextQuestion],
+                },
+                prize: money[indexOfNextQuestion],
+              },
+              earnedMoney: money[indexOfCurrentQuestion],
+            },
+          })
+          setSelectedAnswers([])
+        }
+      } else navigate('/game-result')
     } catch (error) {
       showBoundary(error)
     }
@@ -118,9 +127,9 @@ const Quiz: React.FC = () => {
         className="only-mobile mobile-menu-icon"
         onClick={openMobileMenu}
       />
-      <h2 className="quiz-question">{quiz.question}</h2>
+      <h2 className="quiz-question">{quiz?.question}</h2>
       <div className="answers-wrapper">
-        {quiz.answers.map(({ id, label }, index) => (
+        {quiz?.answers.map(({ id, label }, index) => (
           <div
             key={id}
             className={`option-wrapper answer-option-wrapper ${getOptionStatus(

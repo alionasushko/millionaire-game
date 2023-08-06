@@ -4,6 +4,8 @@ import { ErrorBoundary } from 'react-error-boundary'
 import Game from './pages/game/Game'
 import Home from './pages/main/Home'
 import GameResult from './pages/main/GameResult'
+import MainLayout from './layouts/main'
+import 'react-toastify/dist/ReactToastify.css'
 
 const App: React.FC = () => {
   return (
@@ -15,13 +17,13 @@ const App: React.FC = () => {
       }
     >
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <div className="container">
-          <Routes>
+        <Routes>
+          <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/game" element={<Game />} />
             <Route path="/game-result" element={<GameResult />} />
-          </Routes>
-        </div>
+          </Route>
+        </Routes>
       </BrowserRouter>
     </ErrorBoundary>
   )

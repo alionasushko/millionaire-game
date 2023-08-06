@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { actionTypes } from '../../features/game'
+import { useNavigate } from 'react-router-dom'
+import { useAppSelector, useAppDispatch } from '../../hooks'
+import { selectors, actionTypes } from '../../features/game'
 import Quiz from './quiz/Quiz'
 import Prize from './prize/Prize'
 import './game.css'
 
 const Game: React.FC = () => {
-  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const quiz = useAppSelector(selectors.getQuiz)
+  const earnedMoney = useAppSelector(selectors.getEarnedMoney)
 
   useEffect(() => {
-    dispatch({ type: actionTypes.RESET_QUIZ })
+    if (!quiz) return navigate('/')
+    if (earnedMoney > 0) dispatch({ type: actionTypes.RESET_QUIZ })
   }, [])
 
   return (

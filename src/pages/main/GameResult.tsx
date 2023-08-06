@@ -1,16 +1,20 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { selectors } from '../../features/game'
+import { useAppSelector, useAppDispatch } from '../../hooks'
+import { selectors, actions } from '../../features/game'
 import { numberWithCommas } from '../../utils/helpers'
+import Button from '../../components/Button'
 import hand_image from '../../assets/hand.png'
 import './main.css'
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
-  const earnedMoney = useSelector(selectors.getEarnedMoney)
+  const dispatch = useAppDispatch()
+  const loadingQuiz = useAppSelector(selectors.getLoadingQuiz)
+  const earnedMoney = useAppSelector(selectors.getEarnedMoney)
 
-  const startGame = () => {
+  const startGame = async () => {
+    await dispatch(actions.fetchQuestions())
     navigate('/game')
   }
 
@@ -23,9 +27,14 @@ const Home: React.FC = () => {
         <div className="text-content-wrapper">
           <span className="score-label">Total score:</span>
           <h2>${numberWithCommas(earnedMoney)} earned</h2>
-          <button className="btn-primary" onClick={startGame}>
+          <Button
+            className="btn-primary"
+            loading={loadingQuiz}
+            disabled={loadingQuiz}
+            onClick={startGame}
+          >
             Try again
-          </button>
+          </Button>
         </div>
       </div>
     </section>

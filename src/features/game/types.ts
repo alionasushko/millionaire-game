@@ -1,5 +1,24 @@
-import { CHANGE_QUESTION, RESET_QUIZ, TOGGLE_MOBILE_MENU } from './actionTypes'
+import {
+  FETCH_QUESTIONS_BEGIN,
+  FETCH_QUESTIONS_SUCCESS,
+  FETCH_QUESTIONS_FAILURE,
+  CHANGE_QUESTION,
+  RESET_QUIZ,
+  TOGGLE_MOBILE_MENU,
+} from './actionTypes'
 
+interface FetchQuestionsBeginAction {
+  type: typeof FETCH_QUESTIONS_BEGIN
+}
+interface FetchQuestionsSuccessAction {
+  type: typeof FETCH_QUESTIONS_SUCCESS
+  payload: Question[]
+}
+
+interface FetchQuestionsFailureAction {
+  type: typeof FETCH_QUESTIONS_FAILURE
+  payload: any
+}
 interface ChangeQuestionAction {
   type: typeof CHANGE_QUESTION
   payload?: GameState
@@ -13,6 +32,9 @@ interface OpenMobileMenu {
 }
 
 export type GameActionTypes =
+  | FetchQuestionsBeginAction
+  | FetchQuestionsSuccessAction
+  | FetchQuestionsFailureAction
   | ChangeQuestionAction
   | ResetQuizAction
   | OpenMobileMenu
@@ -35,6 +57,9 @@ export interface GameState {
       quiz: Question
       prize: number
     }
+    questions: Question[]
+    loadingQuiz: boolean
+    quizError: string
     earnedMoney: number
     isOpenMobileMenu: boolean
   }
