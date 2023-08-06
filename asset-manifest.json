@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/millionaire-game/static/css/main.16db8238.css",
-    "main.js": "/millionaire-game/static/js/main.53d433a6.js",
+    "main.css": "/millionaire-game/static/css/main.bb7939f6.css",
+    "main.js": "/millionaire-game/static/js/main.535485ad.js",
     "static/media/hand.png": "/millionaire-game/static/media/hand.76d93413a1b5d6ffe85a.png",
     "index.html": "/millionaire-game/index.html",
-    "main.16db8238.css.map": "/millionaire-game/static/css/main.16db8238.css.map",
-    "main.53d433a6.js.map": "/millionaire-game/static/js/main.53d433a6.js.map"
+    "main.bb7939f6.css.map": "/millionaire-game/static/css/main.bb7939f6.css.map",
+    "main.535485ad.js.map": "/millionaire-game/static/js/main.535485ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.16db8238.css",
-    "static/js/main.53d433a6.js"
+    "static/css/main.bb7939f6.css",
+    "static/js/main.535485ad.js"
   ]
 }
