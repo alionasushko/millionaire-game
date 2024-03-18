@@ -29,6 +29,7 @@ export default (state = initialState, action: GameActionTypes) => {
       return {
         ...initialState,
         loadingQuiz: true,
+        earnedMoney: state.earnedMoney,
       }
     case FETCH_QUESTIONS_SUCCESS:
       return {
@@ -36,12 +37,14 @@ export default (state = initialState, action: GameActionTypes) => {
         level: { ...state.level, quiz: action.payload[0] },
         questions: action.payload,
         loadingQuiz: false,
+        earnedMoney: initialState.earnedMoney,
       }
     case FETCH_QUESTIONS_FAILURE:
       return {
         ...state,
         quizError: action.payload,
         loadingQuiz: false,
+        earnedMoney: initialState.earnedMoney,
       }
     case CHANGE_QUESTION: {
       return {

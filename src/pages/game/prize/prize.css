@@ -16,11 +16,10 @@
 
 .prize .prize-option-wrapper.active .prize-option-outer,
 .prize .prize-option-wrapper.active::before {
-  background-color: var(--orange-100);
+  background-color: var(--aqua-blue);
 }
 .prize .prize-option-wrapper.active .prize-option-outer .prize-option-inner {
-  color: var(--orange-100);
-  background-color: var(--orange-5);
+  color: var(--aqua-blue);
 }
 
 .prize .prize-option-wrapper.passed .prize-option-outer,
@@ -64,6 +63,14 @@
 
   .prize .mobile-close-icon {
     margin: var(--container-padding-mobile) var(--container-padding-mobile) 0 0;
+  }
+
+  .prize .prize-option-wrapper.active .prize-option-outer,
+  .prize .prize-option-wrapper.active::before {
+    background-color: var(--midnight-blue);
+  }
+  .prize .prize-option-wrapper.active .prize-option-outer .prize-option-inner {
+    color: var(--midnight-blue);
   }
 
   .prize .prize-option-wrapper .prize-option-outer .prize-option-inner {

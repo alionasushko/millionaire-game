@@ -12,6 +12,11 @@
   --green-5: #e6faea;
   --red-100: #ec6259;
   --red-5: #fdeeed;
+  --dark-blue: #003b63;
+  --deep-blue: #004974;
+  --deep-blue-5: rgba(0, 73, 116, 0.05);
+  --midnight-blue: #1e6a8e;
+  --aqua-blue: #3891b1;
   --container-padding-mobile: 16px;
 }
 
@@ -48,8 +53,8 @@ body {
   font-weight: 600;
   line-height: 116%;
   width: 14.8em;
-  background-color: var(--orange-100);
-  border-color: var(--orange-100);
+  background-color: var(--midnight-blue);
+  border-color: var(--midnight-blue);
   border: 1px solid transparent;
   padding: 1em 1.2em;
   border-radius: 0.6em;
@@ -59,13 +64,13 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: var(--orange-80);
-  border-color: var(--orange-80);
+  background-color: var(--aqua-blue);
+  border-color: var(--aqua-blue);
 }
 
 .btn-primary:active {
-  background-color: var(--orange-120);
-  border-color: var(--orange-120);
+  background-color: var(--dark-blue);
+  border-color: var(--dark-blue);
 }
 
 .btn-primary:disabled {

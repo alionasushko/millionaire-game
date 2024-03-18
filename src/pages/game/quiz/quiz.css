@@ -51,15 +51,19 @@
 }
 
 .quiz .answer-option-wrapper.active .answer-option-outer,
-.quiz
-  .answer-option-wrapper:not(.success, .error, .disabled):hover
-  .answer-option-outer,
-.quiz .answer-option-wrapper.active::before,
-.quiz .answer-option-wrapper:not(.success, .error, .disabled):hover::before {
+.quiz .answer-option-wrapper.active::before {
   background-color: var(--orange-100);
 }
 .quiz .answer-option-wrapper.active .answer-option-outer .answer-option-inner {
   background-color: var(--orange-5);
+}
+
+.quiz
+  .answer-option-wrapper:not(.success, .error, .disabled, .active):hover
+  .answer-option-outer,
+.quiz
+  .answer-option-wrapper:not(.success, .error, .disabled, .active):hover::before {
+  background-color: var(--midnight-blue);
 }
 
 .quiz .answers-wrapper .answer-option-wrapper .answer-option-outer {
@@ -79,7 +83,7 @@
   .answer-option-outer
   .answer-option-inner
   .option-letter {
-  color: var(--orange-100);
+  color: var(--aqua-blue);
   font-weight: 600;
   margin-right: 8px;
 }
@@ -115,6 +119,11 @@
   .quiz .mobile-menu-icon,
   .quiz .quiz-question {
     padding: 0 40px;
+  }
+
+  .quiz .answer-option-wrapper.active .answer-option-outer,
+  .quiz .answer-option-wrapper.active::before {
+    background-color: var(--midnight-blue);
   }
 }
 
