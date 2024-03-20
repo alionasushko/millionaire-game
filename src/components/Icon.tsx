@@ -1,5 +1,3 @@
-// import React from 'react'
-
 type OnClickType = (e: React.MouseEvent<HTMLElement>) => void
 
 interface IconProps {
