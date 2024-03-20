@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { selectors, actionTypes } from '../../../features/game'
 import { numberWithCommas } from '../../../utils/helpers'
 import Icon from '../../../components/Icon'

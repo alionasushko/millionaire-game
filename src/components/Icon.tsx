@@ -1,3 +1,5 @@
+// import React from 'react'
+
 type OnClickType = (e: React.MouseEvent<HTMLElement>) => void
 
 interface IconProps {
@@ -6,11 +8,11 @@ interface IconProps {
   onClick?: OnClickType
 }
 
-const Icon = ({ name, className, onClick }: IconProps) => {
+const Icon: React.FC<IconProps> = ({ name, className, onClick }) => {
   const icons: {
-    menu: JSX.Element
-    close: JSX.Element
-    spinner: JSX.Element
+    menu: React.ReactNode
+    close: React.ReactNode
+    spinner: React.ReactNode
   } = {
     menu: (
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

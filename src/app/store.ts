@@ -1,6 +1,6 @@
 import { combineReducers, createStore, applyMiddleware, AnyAction } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { GameReducer } from './features/game'
+import { GameReducer } from '../features/game'
 import thunk, { ThunkDispatch, ThunkAction } from 'redux-thunk'
 
 const rootReducer = combineReducers({

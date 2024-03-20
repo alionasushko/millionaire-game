@@ -1,10 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
-import Game from './pages/game/Game'
-import Home from './pages/main/Home'
-import GameResult from './pages/main/GameResult'
-import MainLayout from './layouts/main'
+import Game from '../pages/game/Game'
+import Home from '../pages/main/Home'
+import GameResult from '../pages/main/GameResult'
+import MainLayout from '../layouts/main'
 import 'react-toastify/dist/ReactToastify.css'
 
 const App: React.FC = () => {

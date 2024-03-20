@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 
-const MainLayout = () => {
+const MainLayout: React.FC = () => {
   return (
     <div className="container">
       <Outlet />

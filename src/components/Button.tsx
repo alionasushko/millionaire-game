@@ -5,18 +5,18 @@ type OnClickType = (e: React.MouseEvent<HTMLElement>) => void
 interface ButtonProps {
   loading?: boolean
   disabled?: boolean
-  children: JSX.Element | string
+  children: React.ReactNode | string
   className?: string
   onClick?: OnClickType
 }
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   loading = false,
   disabled = false,
   children,
   className,
   onClick,
-}: ButtonProps) => {
+}) => {
   return (
     <button className={className} onClick={onClick} disabled={disabled}>
       {loading && <Spinner />}

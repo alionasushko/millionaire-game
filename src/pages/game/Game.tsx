@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector, useAppDispatch } from '../../hooks'
+import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { selectors, actionTypes } from '../../features/game'
 import Quiz from './quiz/Quiz'
 import Prize from './prize/Prize'

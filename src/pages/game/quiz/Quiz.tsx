@@ -1,46 +1,16 @@
 import React, { useCallback, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../../hooks'
+import { useAppDispatch, useAppSelector } from '../../../app/hooks'
 import { useNavigate } from 'react-router-dom'
-import { useErrorBoundary } from 'react-error-boundary'
 import { selectors, actionTypes } from '../../../features/game'
 import { Question } from '../../../features/game/types'
 import money from '../../../data/money.json'
 import Icon from '../../../components/Icon'
+import { ALPHABET } from './constants'
 import './quiz.css'
-
-const ALPHABET = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-]
 
 const Quiz: React.FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const { showBoundary } = useErrorBoundary()
 
   const quiz = useAppSelector(selectors.getQuiz)
   const questions = useAppSelector(selectors.getQuestions)
@@ -49,42 +19,39 @@ const Quiz: React.FC = () => {
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([])
 
   const checkAnswers = (userAnswers: string[]) => {
-    try {
-      const indexOfCurrentQuestion: number = questions.findIndex(
-        (question: Question) => question.id === quiz.id
-      )
-      const indexOfNextQuestion: number = indexOfCurrentQuestion + 1
-      const isCorrectResolve = userAnswers.every((answer) =>
-        quiz.correctAnswers.includes(answer)
-      )
+    const isCorrectResolve = userAnswers.every((answer) =>
+      quiz.correctAnswers.includes(answer)
+    )
 
-      if (isCorrectResolve) {
-        if (indexOfNextQuestion === questions.length) {
-          dispatch({
-            type: actionTypes.CHANGE_QUESTION,
-            payload: {
-              earnedMoney: money[indexOfCurrentQuestion],
+    if (!isCorrectResolve) return navigate('/game-result')
+
+    const indexOfCurrentQuestion: number = questions.findIndex(
+      (question: Question) => question.id === quiz.id
+    )
+    const indexOfNextQuestion: number = indexOfCurrentQuestion + 1
+
+    if (indexOfNextQuestion === questions.length) {
+      dispatch({
+        type: actionTypes.CHANGE_QUESTION,
+        payload: {
+          earnedMoney: money[indexOfCurrentQuestion],
+        },
+      })
+      navigate('/game-result')
+    } else {
+      dispatch({
+        type: actionTypes.CHANGE_QUESTION,
+        payload: {
+          level: {
+            quiz: {
+              ...questions[indexOfNextQuestion],
             },
-          })
-          navigate('/game-result')
-        } else {
-          dispatch({
-            type: actionTypes.CHANGE_QUESTION,
-            payload: {
-              level: {
-                quiz: {
-                  ...questions[indexOfNextQuestion],
-                },
-                prize: money[indexOfNextQuestion],
-              },
-              earnedMoney: money[indexOfCurrentQuestion],
-            },
-          })
-          setSelectedAnswers([])
-        }
-      } else navigate('/game-result')
-    } catch (error) {
-      showBoundary(error)
+            prize: money[indexOfNextQuestion],
+          },
+          earnedMoney: money[indexOfCurrentQuestion],
+        },
+      })
+      setSelectedAnswers([])
     }
   }
 

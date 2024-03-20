@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector, useAppDispatch } from '../../hooks'
+import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { selectors, actions } from '../../features/game'
 import { numberWithCommas } from '../../utils/helpers'
 import Button from '../../components/Button'

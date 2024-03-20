@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { toast } from 'react-toastify'
-import { AppDispatch } from '../../store'
+import { AppDispatch } from '../../app/store'
 import {
   FETCH_QUESTIONS_BEGIN,
   FETCH_QUESTIONS_SUCCESS,
